@@ -4,7 +4,6 @@ import streamlit as st
 from branca.element import MacroElement
 from jinja2 import Template
 
-
 # Custom JavaScript for circle animation
 class AnimateCircle(MacroElement):
     _template = Template(u"""
