@@ -1,15 +1,15 @@
-# Project Title
+# Asteroid Impact Simulator
 
-A short description of your project goes here.
+Meteor Madness Challenge
 
 ## Installation
 ```bash
 # NOTE: Make sure that python is installed in your local machine
 # Clone the repository
-git clone https://github.com/username/repository.git
+git clone https://github.com/kyle-darren-laguerta/asteroid-impact-simulator.git
 
 # Navigate into the project directory
-cd repository
+cd asteroid-impact-simulator
 
 # Create a virtual environment
 python -m venv venv
