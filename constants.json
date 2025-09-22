@@ -1,31 +1,37 @@
 {
-    "impactor_compositions": {
-        "stony": {
+    "IMPACTOR_COMPOSITIONS": {
+        "Stony": {
             "density_kg_m3": 2700,
             "yield_strength_pa": 1.0e6
         },
-        "iron": {
+        "Iron": {
             "density_kg_m3": 7800,
             "yield_strength_pa": 1.0e8
         },
-        "carbonaceous": {
+        "Carbonaceous": {
             "density_kg_m3": 1300,
             "yield_strength_pa": 1.0e5
         },
-        "comet": {
+        "Comet": {
             "density_kg_m3": 920,
             "yield_strength_pa": 1.0e4
         }
     },
-    "target_types": {
-        "rock": {
+    "TARGET_TYPES": {
+        "Rock": {
             "density_kg_m3": 2700
         },
-        "water": {
+        "Water": {
             "density_kg_m3": 1000
         },
-        "sedimentary_rock": {
+        "Sedimentary_Rock": {
             "density_kg_m3": 2000
         }
+    },
+    "EARTH": {
+        "gravity": 9.81,
+        "air_density": 1.225,
+        "scale_height": 8500,
+        "target_density": 2700
     }
 }
