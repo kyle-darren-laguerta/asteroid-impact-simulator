@@ -5,7 +5,7 @@ from animation.circle_animation import animate_circle
 
 st.sidebar.title("Inputs")
 
-# Create a session state for storing the latitude and longitude
+# Session States
 if "latlon" not in st.session_state:
     st.session_state.latlon = [13, 122] # Get the value of the coordinates every clicked
 if "displayed_latlon" not in st.session_state:
@@ -20,6 +20,7 @@ if "displayed_zoom" not in st.session_state:
 sim_btn = st.sidebar.button("Simulate")
 print(sim_btn)
 
+# Capture the current value of latitude, longitude, and zoom on simulate button click
 if sim_btn:
     st.session_state.show_circle = True
     st.session_state.displayed_latlon = list(st.session_state.latlon)
