@@ -22,10 +22,10 @@ if "impactor" not in st.session_state:
 #### UI
 st.sidebar.title("Inputs")
 with st.sidebar.form(key="input_parameters"):
-    radius = st.number_input("Asteroid radius (m)", min_value=1.0, value=st.session_state.impactor.radius, step=1.0)
-    velocity = st.number_input("Velocity (m/s)", min_value=1000.0, value=st.session_state.impactor.velocity, step=1000.0)
-    angle = st.slider("Impact angle (degrees)", 0, 90, int(math.degrees(st.session_state.impactor.angle)))
-    composition = st.selectbox("Impactor composition", ["Stony", "Iron", "Carbonaceous", "Comet"])
+    st.session_state.impactor.radius = st.number_input("Asteroid radius (m)", min_value=1.0, value=st.session_state.impactor.radius, step=1.0)
+    st.session_state.impactor.velocity = st.number_input("Velocity (m/s)", min_value=1000.0, value=st.session_state.impactor.velocity, step=1000.0)
+    st.session_state.impactor.angle = st.slider("Impact angle (degrees)", 0, 90, int(st.session_state.impactor.angle))
+    st.session_state.impactor.composition = st.selectbox("Impactor composition", ["Stony", "Iron", "Carbonaceous", "Comet"])
     target = st.selectbox("Target type", ["Rock", "Water", "Sedimentary_Rock"])
     sim_btn = st.form_submit_button("Simulate")
 
@@ -34,7 +34,7 @@ if sim_btn:
     st.session_state.show_circle = True
     st.session_state.displayed_latlon = list(st.session_state.latlon)
     st.session_state.displayed_zoom = st.session_state.curr_zoom
-    st.session_state.impactor = Impactor(radius, velocity, composition, angle)
+    # st.session_state.impactor = Impactor(radius, velocity, composition, angle)
 
 tab1, tab2, tab3 = st.tabs(["Crater", "Thermal Exposure", "Shockwave"])
 
