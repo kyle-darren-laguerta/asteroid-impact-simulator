@@ -1,36 +1,7 @@
 import folium
 from streamlit_folium import st_folium
 import streamlit as st
-from branca.element import MacroElement
-from jinja2 import Template
-
-# Custom JavaScript for circle animation
-class AnimateCircle(MacroElement):
-    _template = Template(u"""
-        {% macro script(this, kwargs) %}
-        var circle = {{this._parent.get_name()}};
-        var r = circle.getRadius();
-        function grow() {
-            r += 500;
-            if (r < 60000) {
-                circle.setRadius(r);
-                requestAnimationFrame(grow);
-            }
-        }
-        grow();
-        {% endmacro %}
-    """)
-
-def animate_circle(m, rad):
-    circle = folium.Circle(
-        location=st.session_state.displayed_latlon,
-        radius=rad,
-        color="red",
-        fill=True,
-        fill_color="lightblue"
-    ).add_to(m)
-
-    circle.add_child(AnimateCircle())
+from animation.circle_animation import animate_circle
 
 st.sidebar.title("Inputs")
 
@@ -41,8 +12,6 @@ if "displayed_latlon" not in st.session_state:
     st.session_state.displayed_latlon = [0, 0] # Get the value of last-clicked coordinate (Only executed when the simulate button was clicked)
 if "show_circle" not in st.session_state:
     st.session_state.show_circle = False
-if "circle_animating" not in st.session_state:
-    st.session_state.circle_animating = False
 if "curr_zoom" not in st.session_state:
     st.session_state.curr_zoom = 6
 if "displayed_zoom" not in st.session_state:
@@ -63,7 +32,7 @@ m = folium.Map(location=st.session_state.latlon, zoom_start=st.session_state.dis
 m.add_child(folium.LatLngPopup())
 
 if st.session_state.show_circle:
-    animate_circle(m, 30000)
+    animate_circle(m, 30000, st.session_state.displayed_latlon)
 
 # Show map in Streamlit and capture interaction
 map_data = st_folium(m, width=700, height=500)
